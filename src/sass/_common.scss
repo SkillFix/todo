@@ -39,21 +39,28 @@ input[type='button'] {
     display: flex;
     justify-content: center;
     color: #fff;
-    font-size: 3тзь ыефке0px;
+    font-size: 30px;
   }
 }
-
+.textarea__wrapper {
+  position: relative;
+}
 #newTask {
   padding-left: 20px;
-  min-width: 300px;
-  min-height: 60px;
-  max-width: 500px;
-  max-height: 150px;
+  min-width: 420px;
+  max-width: 700px;
+  min-height: 100px;
+  max-height: 200px;
   border-radius: 10px;
   border: 2px solid #f03;
   outline: none;
 }
-
+#char_count {
+  color: #000;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
 .todo-list {
   display: flex;
   flex-direction: column;
@@ -63,13 +70,18 @@ input[type='button'] {
   max-height: 80%;
   overflow-y: auto;
   padding-bottom: 50px;
+
   & .task-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    & span {
+
+    & p {
       font-size: 30px;
+      white-space: normal;
+      color: #fff;
+      overflow: hidden;
     }
     &__wrapper {
       display: flex;
@@ -79,9 +91,6 @@ input[type='button'] {
   & .done {
     text-decoration: line-through;
     color: rgb(118, 108, 255);
-  }
-  & span {
-    color: #fff;
   }
 }
 .newtask-box {

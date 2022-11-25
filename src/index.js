@@ -2,8 +2,10 @@ const throttle = require('lodash.throttle');
 const newTaskInput = document.querySelector('#newTask');
 const todoList = document.querySelector('.todo-list');
 const clearListBtn = document.querySelector('#clearList');
-const STORAGE_KEY = 'task-state';
 const form = document.querySelector('.newtask-box');
+let characterCounter = document.getElementById('char_count');
+const STORAGE_KEY = 'task-state';
+const MAXNUMOFCHARS = 100;
 
 newTaskInput.addEventListener('input', throttle(saveData, 500));
 
@@ -29,6 +31,10 @@ function getData() {
 }
 
 newTaskInput.addEventListener('keydown', e => {
+  if (newTaskInput.value.length <= 100) {
+    countCharacters();
+  }
+
   if (e.key !== 'Enter') return;
   let data = JSON.parse(localStorage.getItem('todoList'));
   if (!data) {
@@ -55,7 +61,7 @@ function updateToDoList() {
       'beforeend',
       `
       <li class="task-item">
-      <span class="${state}">${value}</span>
+      <p class="${state}">${value}</p>
       <div class="task-item__wrapper">
       <input type="button" class="confirmTask" data-taskId=${index} value="Completed">
       <input type="button" class="deleteTask" data-taskId=${index} value="Delete">
@@ -115,4 +121,10 @@ const deleteTask = id => {
 
   localStorage.setItem('todoList', JSON.stringify(data));
   updateToDoList();
+};
+
+const countCharacters = () => {
+  let numOfEnteredChars = newTaskInput.value.length;
+  let counter = MAXNUMOFCHARS - numOfEnteredChars;
+  characterCounter.textContent = counter + '/100';
 };

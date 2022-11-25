@@ -1,13 +1,17 @@
 <div class="box">
   <form action="#" class="newtask-box">
     <h1>New task</h1>
-    <textarea
-      type="text"
-      id="newTask"
-      name="newTask"
-      placeholder="Enter dimensions and press Enter"
-      rows="5"
-    ></textarea>
+    <div class="textarea__wrapper">
+      <textarea
+        type="text"
+        id="newTask"
+        name="newTask"
+        placeholder="Enter dimensions and press Enter"
+        rows="3"
+        maxlength="100"
+      ></textarea>
+      <span id="char_count">100/100</span>
+    </div>
   </form>
   <h2>List task</h2>
   <ul class="todo-list"></ul>
