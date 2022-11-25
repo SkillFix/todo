@@ -35,6 +35,8 @@ input[type='button'] {
 
 .newtask-box {
   margin-bottom: 25px;
+  // display: flex;
+  // flex-direction: column;
   & h1 {
     display: flex;
     justify-content: center;
@@ -76,12 +78,11 @@ input[type='button'] {
     align-items: center;
     justify-content: space-between;
     gap: 20px;
+    height: 40px;
 
     & p {
       font-size: 30px;
-      white-space: normal;
       color: #fff;
-      overflow: hidden;
     }
     &__wrapper {
       display: flex;
@@ -92,10 +93,6 @@ input[type='button'] {
     text-decoration: line-through;
     color: rgb(118, 108, 255);
   }
-}
-.newtask-box {
-  display: flex;
-  flex-direction: column;
 }
 #clearList {
   position: absolute;
