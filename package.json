@@ -2,20 +2,20 @@
   "name": "parsel",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://SkillFix.github.io/todoList",
+  "homepage": "https://SkillFix.github.io/todo",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /todoList/"
+    "build": "parcel build src/*.html --public-url /todo/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SkillFix/todoList.git"
+    "url": "git+https://github.com/SkillFix/todo.git"
   },
   "keywords": [],
   "author": "Alexander Repeta <alexander.repeta@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/SkillFix/todoList/issues"
+    "url": "https://github.com/SkillFix/todo/issues"
   },
   "dependencies": {
     "lodash.throttle": "^4.1.1",
