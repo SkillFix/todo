@@ -36,7 +36,9 @@ newTaskInput.addEventListener('keydown', e => {
   }
 
   if (e.key !== 'Enter') return;
+  characterCounter.textContent = '100/100';
   let data = JSON.parse(localStorage.getItem('todoList'));
+
   if (!data) {
     data = [];
   }
