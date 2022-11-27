@@ -93,6 +93,15 @@ function updateToDoList() {
       <input type="button" class="editTask" data-taskId=${index} value="Edit task">
       <input type="button" class="confirmTask" data-taskId=${index} value="Completed">
       <input type="button" class="deleteTask" data-taskId=${index} value="Delete">
+
+      <button type="button" class="showBtn">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class='menu' width="30px" height="30px">
+      <symbol id="menu" viewBox="0 0 32 32">
+      <path d="M11.15 0.9c-5.45 1.95-8.9 5.6-10.5 11.050-1.45 5.1 0.2 11.4 4.1 15.3 6.1 6.050 16.4 6.050 22.5 0 4.55-4.6 5.9-12.050 3.2-17.8-3.45-7.3-12.050-11.15-19.3-8.55zM23.85 9.3c0.5 1.4-0.9 1.7-7.85 1.7s-8.35-0.3-7.85-1.7c0.25-0.7 1.4-0.8 7.85-0.8s7.6 0.1 7.85 0.8zM23.75 16c0 0.65-1.2 0.75-7.45 0.9-7.2 0.1-8.8-0.15-8.050-1.35 0.2-0.4 2.75-0.55 7.9-0.45 6.35 0.15 7.6 0.25 7.6 0.9zM23.45 21.45c0.4 0.25 0.55 0.8 0.4 1.25-0.25 0.7-1.4 0.8-7.85 0.8s-7.6-0.1-7.85-0.8c-0.15-0.45 0-1 0.4-1.25 0.9-0.55 14-0.55 14.9 0z"></path>
+      </symbol>
+      <use xlink:href="#menu"/>
+      </svg>
+      </button>
       </div>
     </li>`
     );
