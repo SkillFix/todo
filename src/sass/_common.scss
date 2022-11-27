@@ -46,6 +46,9 @@ input[type='button'] {
 
 .newtask-box {
   margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   & h1 {
     display: flex;
     justify-content: center;
@@ -55,10 +58,6 @@ input[type='button'] {
 }
 .textarea__wrapper {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
 }
 #newTask {
   padding-left: 20px;
