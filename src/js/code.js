@@ -4,6 +4,7 @@ const todoList = document.querySelector('.todo-list');
 const clearListBtn = document.querySelector('#clearList');
 const form = document.querySelector('.newtask-box');
 const characterCounter = document.querySelector('#char_count');
+const submitBtn = document.querySelector('#submit');
 const STORAGE_KEY_INPUT = 'task-state';
 const MAXNUMOFCHARS = 100;
 
@@ -13,7 +14,7 @@ function getListFromLS() {
   }
   return JSON.parse(localStorage.getItem('todoList'));
 }
-console.log(getListFromLS());
+
 function showСlearButton() {
   const lengthStorage = getListFromLS().length;
   if (lengthStorage > 0) {
@@ -24,6 +25,7 @@ function showСlearButton() {
 }
 showСlearButton();
 
+submitBtn.addEventListener('click', submitData);
 newTaskInput.addEventListener('input', throttle(saveData, 500));
 
 if (localStorage.getItem(STORAGE_KEY_INPUT)) {
@@ -31,7 +33,7 @@ if (localStorage.getItem(STORAGE_KEY_INPUT)) {
 }
 
 function saveData() {
-  let newTask = this.value;
+  let newTask = newTaskInput.value;
   localStorage.setItem(STORAGE_KEY_INPUT, JSON.stringify({ newTask }));
 }
 
@@ -55,7 +57,11 @@ newTaskInput.addEventListener('keydown', e => {
   if (e.key !== 'Enter') {
     return;
   }
+  submitData();
+});
 
+function submitData() {
+  characterCounter.textContent = `100/100`;
   let data = getListFromLS();
 
   if (!data) {
@@ -63,15 +69,15 @@ newTaskInput.addEventListener('keydown', e => {
   }
 
   data.push({
-    value: e.target.value,
+    value: newTaskInput.value,
     state: 'pending',
   });
   const jsonData = JSON.stringify(data);
   localStorage.setItem('todoList', jsonData);
-  e.target.value = '';
+  newTaskInput.value = '';
 
   updateToDoList();
-});
+}
 
 function updateToDoList() {
   todoList.innerHTML = '';
@@ -84,6 +90,7 @@ function updateToDoList() {
       <li class="task-item">
       <p class="${state}">${value}</p>
       <div class="task-item__wrapper">
+      <input type="button" class="editTask" data-taskId=${index} value="Edit task">
       <input type="button" class="confirmTask" data-taskId=${index} value="Completed">
       <input type="button" class="deleteTask" data-taskId=${index} value="Delete">
       </div>
@@ -106,6 +113,11 @@ todoList.addEventListener('click', e => {
 
   if (e.target.className === 'confirmTask') {
     completeTask(e.target.dataset.taskid);
+  }
+
+  if (e.target.className === 'editTask') {
+    newTaskInput.value = getListFromLS()[e.target.dataset.taskid].value;
+    deleteTask(e.target.dataset.taskid);
   }
 });
 
