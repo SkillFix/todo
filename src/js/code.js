@@ -4,22 +4,39 @@ const todoList = document.querySelector('.todo-list');
 const clearListBtn = document.querySelector('#clearList');
 const form = document.querySelector('.newtask-box');
 const characterCounter = document.querySelector('#char_count');
-const STORAGE_KEY = 'task-state';
+const STORAGE_KEY_INPUT = 'task-state';
 const MAXNUMOFCHARS = 100;
+
+function getListFromLS() {
+  if (localStorage.getItem('todoList') == undefined) {
+    return [];
+  }
+  return JSON.parse(localStorage.getItem('todoList'));
+}
+console.log(getListFromLS());
+function showСlearButton() {
+  const lengthStorage = getListFromLS().length;
+  if (lengthStorage > 0) {
+    clearListBtn.style.display = 'block';
+  } else {
+    clearListBtn.style.display = 'none';
+  }
+}
+showСlearButton();
 
 newTaskInput.addEventListener('input', throttle(saveData, 500));
 
-if (localStorage.getItem(STORAGE_KEY)) {
+if (localStorage.getItem(STORAGE_KEY_INPUT)) {
   getData();
 }
 
 function saveData() {
   let newTask = this.value;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify({ newTask }));
+  localStorage.setItem(STORAGE_KEY_INPUT, JSON.stringify({ newTask }));
 }
 
 function getData() {
-  const dataParse = JSON.parse(localStorage.getItem(STORAGE_KEY));
+  const dataParse = JSON.parse(localStorage.getItem(STORAGE_KEY_INPUT));
 
   try {
     for (let key in dataParse) {
@@ -35,9 +52,11 @@ newTaskInput.addEventListener('keydown', e => {
     countCharacters();
   }
 
-  if (e.key !== 'Enter') return;
-  characterCounter.textContent = '100/100';
-  let data = JSON.parse(localStorage.getItem('todoList'));
+  if (e.key !== 'Enter') {
+    return;
+  }
+
+  let data = getListFromLS();
 
   if (!data) {
     data = [];
@@ -56,8 +75,8 @@ newTaskInput.addEventListener('keydown', e => {
 
 function updateToDoList() {
   todoList.innerHTML = '';
-  const localData = JSON.parse(localStorage.getItem('todoList'));
-
+  const localData = getListFromLS();
+  showСlearButton();
   localData.forEach(({ value, state }, index) => {
     todoList.insertAdjacentHTML(
       'beforeend',
@@ -77,6 +96,7 @@ updateToDoList();
 clearListBtn.addEventListener('click', () => {
   localStorage.setItem('todoList', '[]');
   updateToDoList();
+  showСlearButton();
 });
 
 todoList.addEventListener('click', e => {
@@ -88,8 +108,9 @@ todoList.addEventListener('click', e => {
     completeTask(e.target.dataset.taskid);
   }
 });
+
 const completeTask = id => {
-  const data = JSON.parse(localStorage.getItem('todoList'));
+  const data = getListFromLS();
 
   data[id] = {
     ...data[id],
@@ -99,12 +120,14 @@ const completeTask = id => {
   localStorage.setItem('todoList', JSON.stringify(data));
   updateToDoList();
 };
+
 const deleteTask = id => {
-  const data = JSON.parse(localStorage.getItem('todoList'));
+  const data = getListFromLS();
   data.splice(id, 1);
 
   localStorage.setItem('todoList', JSON.stringify(data));
   updateToDoList();
+  showСlearButton();
 };
 
 const countCharacters = () => {
