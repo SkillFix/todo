@@ -29,14 +29,23 @@ input[type='button'] {
   outline: none;
   color: #fff;
 }
+.button {
+  height: 40px;
+  width: 120px;
+  font-size: 15px;
+  background-color: rgb(42, 32, 82);
+  cursor: pointer;
+  border: 2px solid #f03;
+  border-radius: 10px;
+  outline: none;
+  color: #fff;
+}
 .todo-container {
   width: 600px;
 }
 
 .newtask-box {
   margin-bottom: 25px;
-  // display: flex;
-  // flex-direction: column;
   & h1 {
     display: flex;
     justify-content: center;
@@ -46,17 +55,25 @@ input[type='button'] {
 }
 .textarea__wrapper {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 #newTask {
   padding-left: 20px;
   padding-top: 10px;
   min-width: 500px;
   max-width: 800px;
-  min-height: 100px;
+  min-height: 50px;
   max-height: 200px;
   border-radius: 10px;
   border: 2px solid #f03;
   outline: none;
+  &:hover {
+    min-height: 100px;
+    max-height: 200px;
+  }
   @media screen and (max-width: 530px) {
     min-width: 300px;
     max-width: 300px;
@@ -104,7 +121,7 @@ input[type='button'] {
       }
     }
   }
-  & .done {
+  & .task-item .done {
     text-decoration: line-through;
     color: rgb(118, 108, 255);
   }
