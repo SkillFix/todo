@@ -3,7 +3,7 @@ const newTaskInput = document.querySelector('#newTask');
 const todoList = document.querySelector('.todo-list');
 const clearListBtn = document.querySelector('#clearList');
 const form = document.querySelector('.newtask-box');
-let characterCounter = document.getElementById('char_count');
+const characterCounter = document.querySelector('#char_count');
 const STORAGE_KEY = 'task-state';
 const MAXNUMOFCHARS = 100;
 
@@ -70,24 +70,6 @@ function updateToDoList() {
       </div>
     </li>`
     );
-    // const li = document.createElement('li');
-    // const span = document.createElement('span');
-    // const btnConfirm = document.createElement('button');
-    // const btnRemove = document.createElement('button');
-
-    // btnConfirm.textContent = 'Done';
-    // btnConfirm.id = 'confirmTask';
-
-    // btnRemove.textContent = 'Remove';
-    // btnRemove.id = 'removeTask';
-
-    // span.textContent = task;
-
-    // li.append(span)
-    // li.append(btnConfirm)
-    // li.append(btnRemove);
-
-    // listRef.append(li);
   });
 }
 updateToDoList();
