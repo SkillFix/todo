@@ -18,8 +18,7 @@
     "url": "https://github.com/SkillFix/todo/issues"
   },
   "dependencies": {
-    "lodash.throttle": "^4.1.1",
-    "modern-normalize": "^1.1.0"
+    "lodash.throttle": "^4.1.1"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",

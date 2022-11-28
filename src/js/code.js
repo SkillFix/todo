@@ -94,7 +94,7 @@ function updateToDoList() {
       'beforeend',
       `
       <li class="task-item">
-      <p class="${state}">${value}</p>
+      <p class="${state} text">${value}</p>
       <div class="task-item__wrapper">
       <input type="button" class="editTask" data-taskId=${index} value="Edit task">
       <input type="button" class="confirmTask" data-taskId=${index} value="Completed">
