@@ -96,10 +96,11 @@ function updateToDoList() {
       <li class="task-item">
       <p class="${state} text">${value}</p>
       <div class="task-item__wrapper">
+      <div class="button__wrapper">
       <input type="button" class="editTask" data-taskId=${index} value="Edit task">
       <input type="button" class="confirmTask" data-taskId=${index} value="Completed">
       <input type="button" class="deleteTask" data-taskId=${index} value="Delete">
-
+      </div>
       <button type="button" class="showBtn">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class='menu' width="30px" height="30px">
       <symbol id="menu" viewBox="0 0 32 32">

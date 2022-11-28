@@ -143,6 +143,7 @@ input[type='button'] {
       }
       & input[type='button'] {
         display: none;
+        text-align: center;
       }
       @media screen and (max-width: 500px) {
         & input[type='button'] {
@@ -225,8 +226,11 @@ input[type='button'] {
   inherits: true;
   initial-value: 0turn;
 }
-.showText {
+
+.button__wrapper {
+  display: flex;
+  gap: 5px;
   @media screen and (max-width: 500px) {
-    display: none;
+    flex-direction: column;
   }
 }
