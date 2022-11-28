@@ -57,6 +57,9 @@ newTaskInput.addEventListener('keydown', e => {
   if (e.key !== 'Enter') {
     return;
   }
+  if (newTaskInput.value.length < 1) {
+    preventdefault();
+  }
   submitData();
 });
 
@@ -68,6 +71,9 @@ function submitData() {
     data = [];
   }
 
+  if (newTaskInput.value.length < 1) {
+    preventdefault();
+  }
   data.push({
     value: newTaskInput.value,
     state: 'pending',
@@ -105,6 +111,7 @@ function updateToDoList() {
       </div>
     </li>`
     );
+    localStorage.setItem(STORAGE_KEY_INPUT, '[]');
   });
 }
 updateToDoList();
