@@ -71,7 +71,7 @@ function submitData() {
     data = [];
   }
 
-  if (newTaskInput.value.length < 1) {
+  if (newTaskInput.value.length < 3) {
     preventdefault();
   }
   data.push({
